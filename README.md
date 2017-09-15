@@ -4,7 +4,7 @@
 # Adminer Docker Image
 Docker Hub: https://hub.docker.com/r/edyan/adminer
 
-A lightweight Docker container with an embedded version of [Adminer](https://www.adminer.org) (PHP5 on Alpine).
+A lightweight Docker container (10MB!) with an embedded version of [Adminer](https://www.adminer.org) (PHP5 on Alpine).
 
 For now, only the following PHP extensions have been installed : _MySQL, PostgreSQL, SQLite_ and _MS SQL_.
 
