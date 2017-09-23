@@ -23,10 +23,15 @@ RUN     apk update && \
 
          curl https://www.adminer.org/static/download/${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -s -S -o index.php && \
 
-         apk del curl ca-certificates
+         setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/php5 && \
 
-RUN      setcap CAP_NET_BIND_SERVICE=+eip /usr/bin/php5
+         apk del libcap curl ca-certificates && \
+
+         rm -rf /var/cache/apk/*
+
+
 EXPOSE   80
+
 
 USER     adminer
 CMD      ["/usr/bin/php5", "-S", "0.0.0.0:80", "-t", "/app"]
