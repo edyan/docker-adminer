@@ -11,6 +11,8 @@ ENV     ADMINER_VERSION 4.3.1
 # Install
 RUN     apk update && \
 
+        apk upgrade && \
+
         apk add curl ca-certificates && \
 
         apk add libcap \
