@@ -4,9 +4,9 @@
 # Adminer Docker Image
 Docker Hub: https://hub.docker.com/r/edyan/adminer
 
-A lightweight Docker container (10MB!) with an embedded version of [Adminer](https://www.adminer.org) (PHP5 on Alpine).
+A lightweight Docker container (~ 10MB!) with an embedded version of [Adminer](https://www.adminer.org) (PHP7 on Alpine).
 
-For now, only the following PHP extensions have been installed : _MySQL, PostgreSQL, SQLite_ and _MS SQL_.
+For now, only the following PHP extensions have been installed : _DBLib (SQLServer), MySQL, PostgreSQL, SQLite_ and _ODBC_.
 
 ## Usage
 Add the following to your docker-compose.yml file:
@@ -14,7 +14,7 @@ Add the following to your docker-compose.yml file:
 php:
     image: edyan/adminer
     environment:
-        ADMINER_VERSION: 4.3.1
+        ADMINER_VERSION: 4.6.2
     links:
         - mysql
 ```
