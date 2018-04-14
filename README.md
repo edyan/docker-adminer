@@ -19,5 +19,8 @@ php:
         - mysql
 ```
 
+## Changing theme
+If you want to change the theme, override the file `/app/adminer.css` by mounting a volume.
+
 ## Environment variable
 You can set adminer's version by using **ADMINER_VERSION**.
