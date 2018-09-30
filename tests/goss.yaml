@@ -1,0 +1,46 @@
+file:
+  /app:
+    exists: true
+    owner: adminer
+    group: adminer
+    filetype: directory
+  /app/adminer.php:
+    exists: true
+    owner: adminer
+    group: adminer
+    filetype: file
+  /app/index.php:
+    exists: true
+    owner: adminer
+    group: adminer
+    filetype: file
+package:
+  php7:
+    installed: true
+    versions:
+    - 7.2.10-r0
+port:
+  tcp:80:
+    listening: true
+    ip:
+    - 0.0.0.0
+user:
+  adminer:
+    exists: true
+    uid: 1000
+    gid: 1000
+    groups:
+    - adminer
+    home: /app
+    shell: /sbin/halt
+process:
+  php7:
+    running: true
+http:
+  http://127.0.0.1:
+    status: 200
+    timeout: 5000
+    body:
+    - adminer
+    - 4.6.3
+    - MySQL
