@@ -7,10 +7,10 @@ function adminer_object() {
     foreach (glob("plugins/*.php") as $filename) {
         include_once "./$filename";
     }
-
     $plugins = array(
         // specify enabled plugins here
         new AdminerDumpBz2,
+        new AdminerLoginPasswordLess(password_hash('password', PASSWORD_DEFAULT)),
     );
 
     /* It is possible to combine customization and plugins:
