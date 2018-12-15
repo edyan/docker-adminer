@@ -1,5 +1,5 @@
 # Adminer Docker Image
-[![Build Status](https://travis-ci.org/edyan/docker-adminer.svg?branch=master)](https://travis-ci.org/edyan/docker-adminer)
+[![Build Status](https://travis-ci.com/edyan/docker-adminer.svg?branch=master)](https://travis-ci.com/edyan/docker-adminer)
 [![Docker Pulls](https://img.shields.io/docker/pulls/edyan/adminer.svg)](https://hub.docker.com/r/edyan/adminer/)
 
 
