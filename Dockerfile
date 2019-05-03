@@ -39,6 +39,10 @@ RUN     apk update && \
         apk del libcap curl ca-certificates && \
         rm -rf /var/cache/apk/*
 
+# configure PHP
+RUN     sed -i 's/upload_max_filesize.*=.*/upload_max_filesize = 256M/g' /etc/php7/php.ini
+RUN     sed -i 's/post_max_size.*=.*/post_max_size = 256M/g' /etc/php7/php.ini
+
 COPY    adminer-with-plugins.php index.php
 RUN     chown -R adminer:adminer /app
 

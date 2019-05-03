@@ -18,7 +18,7 @@ package:
   php7:
     installed: true
     versions:
-    - 7.2.10-r0
+    - 7.2.13-r0
 port:
   tcp:80:
     listening: true
