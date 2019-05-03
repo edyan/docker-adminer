@@ -1,11 +1,12 @@
-FROM    alpine:3.8
+FROM    alpine:3.9
+
+ENV     ADMINER_VERSION 4.7.1
 
 # Prepare environment
-RUN     addgroup adminer
-RUN     adduser -h /app -D -G adminer adminer
-RUN     mkdir -p /app
-RUN     chown adminer:adminer /app
-ENV     ADMINER_VERSION 4.6.3
+RUN     addgroup adminer && \
+        adduser -h /app -D -G adminer adminer && \
+        mkdir -p /app && \
+        chown adminer:adminer /app
 
 WORKDIR /app
 
@@ -21,6 +22,7 @@ RUN     apk update && \
                 php7-pdo_odbc \
                 php7-pdo_pgsql \
                 php7-pdo_sqlite \
+                php7-simplexml \
                 php7-sqlite3 && \
         # Install Adminer
         curl https://www.adminer.org/static/download/${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -s -S -o adminer.php && \

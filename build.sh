@@ -2,11 +2,20 @@
 
 set -e
 
-docker build -t edyan_adminer_test .
+TAG=edyan/adminer:latest
+
+echo "Building ${TAG}"
+docker build -t ${TAG} .
+
+echo -e "${GREEN}Build Done${NC}."
 echo ""
+echo "Run :"
+echo "  docker run -d --rm --name adminer${VERSION}-test-ctn ${TAG}"
+echo "  docker exec -i -t adminer${VERSION}-test-ctn /bin/ash"
+echo "Once Done : "
+echo "  docker stop adminer${VERSION}-test-ctn"
 echo ""
-echo -e "\x1b[1;32mBuild Done. To run it: \e[0m"
-echo '  docker run --rm  --name adminer-test-ctn edyan_adminer_test'
-echo ""
-echo "Or if you want to directly enter the container to run some commands: "
-echo '  docker run -ti --rm edyan_adminer_test /bin/sh'
+echo "Or if you want to directly enter the container, then remove it : "
+echo "  docker run -ti --rm ${TAG} /bin/ash"
+echo "To push that version (and other of the same repo):"
+echo "docker push edyan/adminer"
