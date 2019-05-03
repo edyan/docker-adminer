@@ -2,12 +2,7 @@ FROM    alpine:3.9
 
 ENV     ADMINER_VERSION 4.7.1
 
-# Prepare environment
-RUN     addgroup adminer && \
-        adduser -h /app -D -G adminer adminer && \
-        mkdir -p /app && \
-        chown adminer:adminer /app
-
+RUN     mkdir -p /app
 WORKDIR /app
 
 # Install
@@ -24,6 +19,9 @@ RUN     apk update && \
                 php7-pdo_sqlite \
                 php7-simplexml \
                 php7-sqlite3 && \
+        # configure PHP
+        sed -i 's/upload_max_filesize.*=.*/upload_max_filesize = 256M/g' /etc/php7/php.ini && \
+        sed -i 's/post_max_size.*=.*/post_max_size = 256M/g' /etc/php7/php.ini && \
         # Install Adminer
         curl https://www.adminer.org/static/download/${ADMINER_VERSION}/adminer-${ADMINER_VERSION}.php -s -S -o adminer.php && \
         # Install plugins (defined in adminer-with-plugins.php)
@@ -39,12 +37,12 @@ RUN     apk update && \
         apk del libcap curl ca-certificates && \
         rm -rf /var/cache/apk/*
 
-# configure PHP
-RUN     sed -i 's/upload_max_filesize.*=.*/upload_max_filesize = 256M/g' /etc/php7/php.ini
-RUN     sed -i 's/post_max_size.*=.*/post_max_size = 256M/g' /etc/php7/php.ini
-
 COPY    adminer-with-plugins.php index.php
-RUN     chown -R adminer:adminer /app
+
+# Setup app user
+RUN     addgroup adminer && \
+        adduser -s /sbin/halt -h /app -D -G adminer adminer && \
+        chown -R adminer:adminer /app
 
 EXPOSE   80
 

@@ -18,7 +18,8 @@ package:
   php7:
     installed: true
     versions:
-    - 7.2.13-r0
+      contain-element:
+        match-regexp: "7.2.(.+)"
 port:
   tcp:80:
     listening: true
@@ -42,5 +43,5 @@ http:
     timeout: 5000
     body:
     - adminer
-    - 4.6.3
+    - 4.7.1
     - MySQL

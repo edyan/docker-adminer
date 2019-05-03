@@ -5,9 +5,11 @@
 
 Docker Hub: https://hub.docker.com/r/edyan/adminer
 
-A lightweight Docker container (~ 10MB!) with an embedded version of [Adminer](https://www.adminer.org) (PHP7 on Alpine).
+A lightweight Docker container (~ 10MB!) with an embedded version 
+of [Adminer](https://www.adminer.org) (PHP7 on Alpine).
 
-For now, only the following PHP extensions have been installed : _DBLib (SQLServer), MySQL, PostgreSQL, SQLite_, _MongoDB_ and _ODBC_.
+For now, only the following PHP extensions have been installed : 
+_DBLib (SQLServer), MySQL, PostgreSQL, SQLite_, _MongoDB_ and _ODBC_.
 
 ## Environment variable
 You can set adminer's version by using **ADMINER_VERSION**.
