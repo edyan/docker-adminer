@@ -11,9 +11,6 @@ of [Adminer](https://www.adminer.org) (PHP7 on Alpine).
 For now, only the following PHP extensions have been installed : 
 _DBLib (SQLServer), MySQL, PostgreSQL, SQLite_, _MongoDB_ and _ODBC_.
 
-## Environment variable
-You can set adminer's version by using **ADMINER_VERSION**.
-
 ## Case of password less databases (SQLite)
 Enter the "default" password is _password_ to let adminer login.
 
@@ -22,8 +19,6 @@ Add the following to your docker-compose.yml file:
 ```yaml
 adminer:
     image: edyan/adminer
-    environment:
-        ADMINER_VERSION: 4.6.2
 ```
 
 ## Changing theme
