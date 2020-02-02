@@ -1,4 +1,4 @@
-FROM    alpine:3.11
+FROM    alpine:3.9
 
 ARG     ADMINER_VERSION=4.7.6
 
