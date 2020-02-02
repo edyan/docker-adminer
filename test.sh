@@ -10,4 +10,5 @@ NC='\033[0m' # No Color
 echo ""
 echo -e "${GREEN}Testing ${NC}"
 cd tests
-dgoss run edyan_adminer_test
+dgoss run edyan/adminer:latest
+
