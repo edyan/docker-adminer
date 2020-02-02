@@ -43,5 +43,5 @@ http:
     timeout: 5000
     body:
     - adminer
-    - 4.7.1
+    - 4.7.6
     - MySQL
