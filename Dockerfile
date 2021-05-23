@@ -1,6 +1,6 @@
-FROM    alpine:3.9
+FROM    alpine:3.13
 
-ARG     ADMINER_VERSION=4.7.6
+ARG     ADMINER_VERSION=4.8.1
 
 RUN     mkdir -p /app
 WORKDIR /app
@@ -40,27 +40,27 @@ RUN     apk update \
 
 COPY    adminer-with-plugins.php index.php
 
-# At the end as it changes everytime ;)
-ARG         BUILD_DATE
-ARG         DOCKER_TAG
-ARG         VCS_REF
-LABEL       maintainer="Emmanuel Dyan <emmanueldyan@gmail.com>" \
-            org.label-schema.build-date=${BUILD_DATE} \
-            org.label-schema.name=${DOCKER_TAG} \
-            org.label-schema.description="Docker Adminer Image based on Alpine and including a few plugins" \
-            org.label-schema.url="https://cloud.docker.com/u/edyan/repository/docker/edyan/adminer" \
-            org.label-schema.vcs-url="https://github.com/edyan/docker-adminer" \
-            org.label-schema.vcs-ref=${VCS_REF} \
-            org.label-schema.schema-version="1.0" \
-            org.label-schema.vendor="edyan" \
-            org.label-schema.docker.cmd="docker run -d --rm ${DOCKER_TAG}"
-
 # Setup app user
 RUN     addgroup adminer \
 &&      adduser -s /sbin/halt -h /app -D -G adminer adminer \
 &&      chown -R adminer:adminer /app
 
 EXPOSE  80
+
+# At the end as it changes everytime ;)
+ARG     BUILD_DATE
+ARG     DOCKER_TAG
+ARG     VCS_REF
+LABEL   maintainer="Emmanuel Dyan <emmanueldyan@gmail.com>" \
+        org.label-schema.build-date=${BUILD_DATE} \
+        org.label-schema.name=${DOCKER_TAG} \
+        org.label-schema.description="Docker Adminer Image based on Alpine and including a few plugins" \
+        org.label-schema.url="https://cloud.docker.com/u/edyan/repository/docker/edyan/adminer" \
+        org.label-schema.vcs-url="https://github.com/edyan/docker-adminer" \
+        org.label-schema.vcs-ref=${VCS_REF} \
+        org.label-schema.schema-version="1.0" \
+        org.label-schema.vendor="edyan" \
+        org.label-schema.docker.cmd="docker run -d --rm ${DOCKER_TAG}"
 
 USER    adminer
 CMD     ["/usr/bin/php7", "-S", "0.0.0.0:80", "-t", "/app"]

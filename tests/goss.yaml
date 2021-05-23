@@ -19,7 +19,7 @@ package:
     installed: true
     versions:
       contain-element:
-        match-regexp: "7.2.(.+)"
+        match-regexp: "7.4.(.+)"
 port:
   tcp:80:
     listening: true
@@ -43,5 +43,5 @@ http:
     timeout: 5000
     body:
     - adminer
-    - 4.7.6
+    - 4.8.1
     - MySQL
